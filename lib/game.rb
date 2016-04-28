@@ -1,6 +1,3 @@
-require_relative 'Contestant'
-require_relative 'Tribe'
-
 class Game
   attr_reader :tribes
 
