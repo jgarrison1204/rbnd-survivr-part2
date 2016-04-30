@@ -20,10 +20,12 @@ class Tribe
 
   #Tribal accepts options hash and allows tribal_council to have a default value
   #not_immune_array is an an array of contestants who did not win. @members is an array of contestants passed in through tribe_hash
-  #the bloc deletes the contestant who =='s the immune: "contestant"
+  #the bloc removes the contestant who =='s the immune: "contestant"
   #contestant_to_delete randomly selects a members of the not_immune_array to delete
   def tribal_council(options={})
-    not_immune_array = @members.delete_if {|contestant| contestant == options[:immune]}
+    #Is there a reason we need line 28?  If I comment it out the program runs.
+    #Needed it for testing but not sure we need for program.????
+    not_immune_array = @members.select {|contestant| contestant != options[:immune]}
     contestant_to_delete = not_immune_array.sample
     @members.delete(contestant_to_delete)
     return contestant_to_delete
