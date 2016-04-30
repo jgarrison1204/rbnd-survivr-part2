@@ -13,7 +13,7 @@ class Game
     @tribes << new_tribe
   end
 
-  #Using sample to randomly returns an item in the array.  Each item in this array is a Tribe object
+  #Using sample to randomly return an item in the array.  Each item in this array is a Tribe object
   def immunity_challenge
     @tribes.sample
   end
@@ -42,7 +42,7 @@ class Game
     @merged_tribe_array.flatten!
   end
 
-  #Returns the first item in the array (merged contestants) calls members methods and uses sample to randomly select the winner
+  #Returns the first item in the #tribes array (merged contestants) calls members methods and uses sample to randomly select the winner
   def individual_immunity_challenge
     contestant_immune_from_elimination = @tribes[0].members.sample
   end
