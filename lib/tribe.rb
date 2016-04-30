@@ -9,7 +9,7 @@ class Tribe
 
     puts "Tribe #{@name} has the following members:"
     @members.each do |assign_member_to_tribe|
-      puts "- #{assign_member_to_tribe}"
+      puts "- #{assign_member_to_tribe.name.capitalize}".pink
     end
   end
 

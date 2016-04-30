@@ -2,6 +2,7 @@ require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
 require_relative "jury"
+require 'colorizr'
 
 #After your tests pass, uncomment this code below
 #=========================================================
@@ -31,9 +32,9 @@ require_relative "jury"
     puts "----Phase Two----"
     3.times do
       immune_contestant = @borneo.individual_immunity_challenge
-      puts "Tribe member #{immune_contestant} is granted immunity."
+      puts "Tribe member #{immune_contestant.name.capitalize} is granted immunity.".green
       voted_off = @merge_tribe.tribal_council
-      puts "Tribe member #{voted_off} is voted off."
+      puts "Tribe member #{voted_off.name.capitalize} is voted off.".red
     end
   end
 
@@ -53,6 +54,7 @@ require_relative "jury"
  @jury = Jury.new
  phase_three #7 elminiations become jury members
  finalists = @merge_tribe.members #set finalists
+ puts "----Jury Votes----"
  vote_results = @jury.cast_votes(finalists) #Jury members report votes
  @jury.report_votes(vote_results) #Jury announces their votes
  @jury.announce_winner(vote_results) #Jury announces final winner

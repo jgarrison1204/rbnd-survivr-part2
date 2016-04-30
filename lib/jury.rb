@@ -11,7 +11,7 @@ class Jury
   #pushs contestants who have been elminated from the merged tribe to the @members array
   def add_member(juror)
     @members << juror
-    puts "#{juror} has been eliminated and is now on the Jury."
+    puts "#{juror.name.capitalize} has been eliminated and is now on the Jury.".yellow
   end
 
   #Passes in an array of two strings (names of finalists).  Loops the names of finalists as the key of the @vote_counter_hash
@@ -22,7 +22,7 @@ class Jury
     finalists.each {|finalist| @vote_counter_hash[finalist] = 0}
     @members.each do |juror|
       finalist_voted_for = finalists.sample
-      puts "#{juror} voted for #{finalist_voted_for}"
+      puts "#{juror.name.capitalize} voted for #{finalist_voted_for.name.capitalize}".pink
       @vote_counter_hash[finalist_voted_for] += 1
     end
     return @vote_counter_hash
@@ -30,15 +30,17 @@ class Jury
 
   #iterates through @vote_counter_hash and prints number of votes per finalist
   def report_votes(vote_counter_hash)
+    puts "----Total Votes----"
     vote_counter_hash.each do |finalist, vote_total|
-      puts "#{finalist} had #{vote_total} votes."
+      puts "#{finalist.name.capitalize} had #{vote_total} votes.".light_blue
     end
   end
 
   #most_votes holds the highest integer in vote_counter_hash.
   #iterates through vote_counter_hash and returns finalist name of individual who had the most votes.
   def announce_winner(vote_counter_hash)
+    puts "----The Winner----"
     most_votes = vote_counter_hash.values.max
-    vote_counter_hash.each {|finalist,vote_total| puts finalist.name if vote_total == most_votes}
+    vote_counter_hash.each {|finalist,vote_total| puts "The winner is #{finalist.name.capitalize}!".blue if vote_total == most_votes}
   end
 end
