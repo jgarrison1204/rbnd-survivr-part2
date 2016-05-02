@@ -7,7 +7,7 @@ class String
     #code to generate all color methods goes here
     @@colors.each do |color, number|
       self.send(:define_method, color) do
-        puts "\e[#{number}m #{self}\e[0m"
+        "\e[#{number}m #{self}\e[0m"
       end
     end
   end

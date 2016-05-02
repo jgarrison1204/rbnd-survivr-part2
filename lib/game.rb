@@ -32,7 +32,7 @@ class Game
     merged_tribe = Tribe.new({name: name_new_tribe, members: add_merged_contestants_as_values})
     clear_tribes
     add_tribe(merged_tribe)
-    return @tribes[0]
+    return @tribes.first
   end
 
   #Takes array instanziated at intailize and pushes all members of all tribes into the array
@@ -44,6 +44,6 @@ class Game
 
   #Returns the first item in the #tribes array (merged contestants) calls members methods and uses sample to randomly select the winner
   def individual_immunity_challenge
-    contestant_immune_from_elimination = @tribes[0].members.sample
+    contestant_immune_from_elimination = @tribes.first.members.sample
   end
 end

@@ -25,7 +25,7 @@ class Tribe
   def tribal_council(options={})
     #Is there a reason we need line 28?  If I comment it out the program runs.
     #Needed it for testing but not sure we need for program.????
-    not_immune_array = @members.select {|contestant| contestant != options[:immune]}
+    not_immune_array = @members.reject {|contestant| contestant == options[:immune]}
     contestant_to_delete = not_immune_array.sample
     @members.delete(contestant_to_delete)
     return contestant_to_delete

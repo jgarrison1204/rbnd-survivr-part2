@@ -33,7 +33,7 @@ require 'colorizr'
     3.times do
       immune_contestant = @borneo.individual_immunity_challenge
       puts "Tribe member #{immune_contestant.name.capitalize} is granted immunity.".green
-      voted_off = @merge_tribe.tribal_council
+      voted_off = @merge_tribe.tribal_council(immune: immune_contestant)
       puts "Tribe member #{voted_off.name.capitalize} is voted off.".red
     end
   end
@@ -56,5 +56,7 @@ require 'colorizr'
  finalists = @merge_tribe.members #set finalists
  puts "----Jury Votes----"
  vote_results = @jury.cast_votes(finalists) #Jury members report votes
+ puts "----Total Votes----"
  @jury.report_votes(vote_results) #Jury announces their votes
+ puts "----The Winner----"
  @jury.announce_winner(vote_results) #Jury announces final winner
