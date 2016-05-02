@@ -60,7 +60,6 @@ class TestJury < Minitest::Test
        @jury.report_votes(final_votes)
      end
      assert_equal 2, output[0].split("\n").length
-     puts @jury.report_votes(final_votes)
    end
   #
    def test_announce_winner
